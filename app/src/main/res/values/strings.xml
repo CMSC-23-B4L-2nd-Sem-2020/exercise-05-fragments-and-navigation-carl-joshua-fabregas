@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Fabregas_Exer3</string>
+    <string name="app_name">Lights Out Version 2</string>
     <string name="what_s_your_name">What\'s your name?</string>
     <string name="done">DONE</string>
     <string name="retry">RETRY</string>

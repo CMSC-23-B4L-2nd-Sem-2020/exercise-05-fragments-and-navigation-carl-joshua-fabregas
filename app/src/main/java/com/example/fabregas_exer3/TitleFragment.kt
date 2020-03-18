@@ -24,7 +24,7 @@ class TitleFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentTitleBinding>(inflater,R.layout.fragment_title,container,false)
-
+//sends the info to the next fragment when done is clicked
         binding.doneButton.setOnClickListener {
             view:View -> view.findNavController().navigate(R.id.action_titleFragment2_to_gameFragment,
             bundleOf("player" to binding.nameEntry.text.toString()))      ;

@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".CongratulationFragment">
+    tools:context="com.example.fabregas_exer3.CongratulationFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,48 +27,49 @@
             android:id="@+id/message_clicks"
             android:layout_width="112dp"
             android:layout_height="24dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="monospace"
             android:text="@string/you_made"
             android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/clicks"
             app:layout_constraintEnd_toEndOf="@+id/congratulation"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="@+id/congratulation"
-            app:layout_constraintTop_toBottomOf="@+id/congratulation"
-            app:layout_constraintVertical_bias="0.254" />
+            app:layout_constraintTop_toBottomOf="@+id/congratulation" />
 
         <TextView
             android:id="@+id/clicks"
             android:layout_width="122dp"
             android:layout_height="89dp"
-            android:layout_marginBottom="16dp"
-            android:text="TextView"
+            android:layout_marginTop="16dp"
             android:textAlignment="center"
             android:textColor="#AA0909"
+            android:textSize="64sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/message_click2"
             app:layout_constraintEnd_toEndOf="@+id/message_clicks"
             app:layout_constraintHorizontal_bias="0.466"
-            app:layout_constraintStart_toStartOf="@+id/message_clicks" />
+            app:layout_constraintStart_toStartOf="@+id/message_clicks"
+            app:layout_constraintTop_toBottomOf="@+id/message_clicks" />
 
         <Button
             android:id="@+id/restart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="96dp"
             android:layout_marginBottom="240dp"
             android:text="@string/restart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clicks" />
 
         <TextView
             android:id="@+id/message_click2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="monospace"
             android:text="clicks!"
             android:textAlignment="center"
@@ -77,6 +78,7 @@
             app:layout_constraintEnd_toEndOf="@+id/clicks"
             app:layout_constraintHorizontal_bias="0.507"
             app:layout_constraintStart_toStartOf="@+id/clicks"
+            app:layout_constraintTop_toBottomOf="@+id/clicks"
             tools:ignore="HardcodedText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

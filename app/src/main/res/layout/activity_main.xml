@@ -13,9 +13,11 @@
     android:orientation="vertical">
     <fragment
         android:id="@+id/titleFragment"
-        android:name="com.example.fabregas_exer3.TitleFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/fragment_title" />
+        tools:layout="@layout/fragment_title"
+        app:navGraph = "@navigation/navigation"
+        app:defaultNavHost="true"/>
 </LinearLayout>
 </layout>

@@ -1,5 +1,6 @@
 package com.example.fabregas_exer3
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.fabregas_exer3.databinding.FragmentGameBinding
 
 /**
@@ -15,18 +18,22 @@ import com.example.fabregas_exer3.databinding.FragmentGameBinding
  */
 class GameFragment : Fragment() {
     private lateinit var binding: FragmentGameBinding
+    private var lights_off: Int = 0;
+    private var num_of_clicks: Int = 0;
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         binding = DataBindingUtil.inflate<FragmentGameBinding>(inflater,R.layout.fragment_game,container,false)
-
+        binding.name.text = "Go " + this.arguments?.get("player").toString() + " !!"
         var array = createArray()
+        binding.retry.setOnClickListener {
+            retry(array);
+        }
+        run(array,binding.retry);
 
-        binding.retry.setOnClickListener { retry(array) }
-        run(array,binding.retry)
 
         return binding.root
     }
@@ -78,39 +85,33 @@ class GameFragment : Fragment() {
     private fun is_white(view:Button){ //checks using the set tag intially 0, when the tag is 1, it changes the color
 
         if(view.getTag() == 1){
-            view.setBackgroundColor(Color.parseColor("Teal"))
-            view.setTag(0)
-        }else{
             view.setBackgroundColor(Color.CYAN)
+            view.setTag(0)
+
+            this.lights_off -= 1
+        }else{
+            view.setBackgroundColor(Color.parseColor("Teal"))
             view.setTag(1)
+            this.lights_off += 1
         }
 
     }
 
-    private fun run(view: List<List<Button>>, butts: Button){ //the whole game process
+    private fun run(list: List<List<Button>>, butts: Button){ //the whole game process
         for (i in 0..4){
             for (j in 0..4){
                 //uses individual ids to see if clicked
-                (view[i][j]).setOnClickListener {
-                    checker(view, i, j, butts)
+                (list[i][j]).setOnClickListener {
+                    checker(list, i, j, butts)
+                    this.num_of_clicks+=1
+                    if(this.lights_off>=25) { view?.findNavController()?.navigate(R.id.action_gameFragment_to_congratulationFragment,
+                        bundleOf("clicks" to this.num_of_clicks, "name" to this.arguments?.get("player").toString())) };
                 }
             }
         }
+
     }
 
-    private fun show(view: List<List<Button>>) { //shows the buttons/lights
-        for (i in 0..4) {
-            for (j in 0..4) {
-                val obj = (view[i][j])
-                if (obj.visibility == View.GONE) {
-                    obj.visibility = View.VISIBLE
-                } else {
-                    //if its already visible, it means the rest are too, no need to show
-                    break
-                }
-            }
-        }
-    }
 
 
     private fun retry(view: List<List<Button>>){ //resets the game without changing the name
@@ -118,9 +119,11 @@ class GameFragment : Fragment() {
             for (j in 0..4){
                 val temp = (view[i][j])
                 temp.setTag(0)
-                temp.setBackgroundColor(Color.parseColor("TEAL"))
+                temp.setBackgroundColor(Color.CYAN)
             }
         }
+        this.lights_off = 0;
+        this.num_of_clicks = 0;
     }
 
     private fun createArray(): List<List<Button>>{ //creates 5x5 array by creating 5 list arrays to represent each row then combining them to form the 2d array

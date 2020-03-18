@@ -37,21 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 //
-//    private fun addName(view: View){ //when the user clicks the done button it means that theyve inputted their name
-//        //var declaraton
-//        val textView = findViewById<TextView>(R.id.name_ent)
-//        val inputedText = findViewById<EditText>(R.id.name_entry)
-//
-//        //visibility changer
-//        textView.setText(inputedText.text)
-//        textView.visibility = View.VISIBLE
-//        inputedText.visibility = View.GONE
-//
-//        //keyboard
-//         val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//        inputMethodManager.hideSoftInputFromWindow(view.windowToken,0)
-//
-//    }
+
 //
 //    private fun checker(view:List<List<Int>> , i: Int, j: Int, butts: Button){ //checkered referring to checking the side  of the clicked button
 //        //if the retry button is visible

@@ -23,6 +23,7 @@ class CongratulationFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate<FragmentCongratulationBinding>(inflater,R.layout.fragment_congratulation,container,false)
         binding.clicks.text = this.arguments?.get("clicks").toString()
+        //we pass the name so that everytime the user goes back to the game fragment via restart button it doesnt get a null value
         binding.restart.setOnClickListener{
                 view:View -> view.findNavController().navigate(R.id.action_congratulationFragment_to_gameFragment, bundleOf("player" to this.arguments?.get("name").toString()))      ;
         }

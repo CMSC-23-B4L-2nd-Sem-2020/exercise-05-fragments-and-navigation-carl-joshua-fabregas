@@ -18,6 +18,8 @@ import com.example.fabregas_exer3.databinding.FragmentGameBinding
  */
 class GameFragment : Fragment() {
     private lateinit var binding: FragmentGameBinding
+
+    //declared as global so that it can be used by other functions without passing
     private var lights_off: Int = 0;
     private var num_of_clicks: Int = 0;
     @SuppressLint("SetTextI18n")

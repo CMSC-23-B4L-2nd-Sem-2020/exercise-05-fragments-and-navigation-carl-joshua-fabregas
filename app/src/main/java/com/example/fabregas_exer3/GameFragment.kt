@@ -1,4 +1,4 @@
-package com.example.fabregas_exer3
+gipackage com.example.fabregas_exer3
 
 import android.annotation.SuppressLint
 import android.graphics.Color
@@ -106,6 +106,7 @@ class GameFragment : Fragment() {
                 (list[i][j]).setOnClickListener {
                     checker(list, i, j, butts)
                     this.num_of_clicks+=1
+                    //putted this on a set click listener because if you pur it on onCreate it only checks on the initialization and not the whole game mechanism
                     if(this.lights_off>=25) { view?.findNavController()?.navigate(R.id.action_gameFragment_to_congratulationFragment,
                         bundleOf("clicks" to this.num_of_clicks, "name" to this.arguments?.get("player").toString())) };
                 }
